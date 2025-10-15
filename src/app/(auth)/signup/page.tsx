@@ -3,11 +3,7 @@ import { requireUnAuth } from "@/lib/auth-utils";
 
 export const Signup = async () => {
   await requireUnAuth();
-  return (
-    <div>
-      <SignupForm />
-    </div>
-  );
+  return <SignupForm />;
 };
 
 export default Signup;

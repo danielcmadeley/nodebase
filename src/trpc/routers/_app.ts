@@ -9,6 +9,7 @@ export const appRouter = createTRPCRouter({
     });
     return { success: true, message: "AI executed" };
   }),
+
   getWorkflows: protectedProcedure.query(async ({ ctx }) => {
     return prisma.workflow.findMany();
   }),

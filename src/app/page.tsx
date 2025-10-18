@@ -23,6 +23,9 @@ export default function Home() {
     onSuccess: () => {
       toast.success("AI tested");
     },
+    onError: () => {
+    toast.error("Error testing AI");
+    },
   }));
 
   return (

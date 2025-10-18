@@ -10,6 +10,7 @@ export default function Home() {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
   const { data } = useQuery(trpc.getWorkflows.queryOptions());
+  
   const create = useMutation(
     trpc.createWorkflows.mutationOptions({
       onSuccess: () => {
@@ -18,13 +19,22 @@ export default function Home() {
     }),
   );
 
+  const testAI = useMutation(trpc.testAI.mutationOptions({
+    onSuccess: () => {
+      toast.success("AI tested");
+    },
+  }));
+
   return (
     <div>
       {JSON.stringify(data)}
       <Button disabled={create.isPending} onClick={() => create.mutate()}>
         Create Workflow
       </Button>
-      <TempLogout />
-    </div>
-  );
-}
+      <Button disabled={testAI.isPending} onClick={() => testAI.mutate()}>
+       Test AI
+     </Button>
+     <TempLogout />
+   </div>
+ );
+

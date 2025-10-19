@@ -1,12 +1,6 @@
+import { checkout, polar, portal } from "@polar-sh/better-auth";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import {
-  polar,
-  checkout,
-  portal,
-  usage,
-  webhooks,
-} from "@polar-sh/better-auth";
 import { polarClient } from "./polar";
 // If your Prisma file is located elsewhere, you can change the path
 import prisma from "./db";
@@ -24,6 +18,7 @@ export const auth = betterAuth({
       client: polarClient,
       createCustomerOnSignUp: true,
       use: [
+        portal(),
         checkout({
           products: [
             {
